@@ -6,28 +6,52 @@ import {storiesOf, moduleMetadata} from '@storybook/angular';
 //@ts-ignore
 import * as markdown from './notes/component-a.notes.md';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { any } from 'prop-types';
 
 var fb: FormBuilder;
 
-export const testForm = {
-    name:'Abhi',
-    email:'gmail'
-  }
+// export const testForm = {
+//     name:'Abhishek',
+//     email:'gmail'
+//   }
 
-storiesOf('Component A',module)
+
+  storiesOf('Component A', module)
 .addDecorator(
-    moduleMetadata({
-      declarations: [ComponentAComponent],
-      imports:[ReactiveFormsModule],
-      providers:[FormBuilder]
-    })
-  )
-.add('testForm',() => ({
-    template:`<app-component-a [testForm]="testForm"></app-component-a>`,
-    props:{
-        testForm            
-    },   
-}),{notes:{markdown}})
+      moduleMetadata({
+        declarations: [ComponentAComponent],
+        imports:[ReactiveFormsModule],
+        providers:[FormBuilder]
+      })
+    )
+.add('forms',()=>({
+  component:ComponentAComponent,
+  props:{
+    // name:'Abhi',
+    // email:'gmail',
+    onSubmit: ($event)=>{
+      // let formCheck = '';
+      // formCheck = _event;
+
+      console.log($event.value);
+    }
+  }
+}))
+
+// storiesOf('Component A',module)
+// .addDecorator(
+//     moduleMetadata({
+//       declarations: [ComponentAComponent],
+//       imports:[ReactiveFormsModule],
+//       providers:[FormBuilder]
+//     })
+//   )
+// .add('testForm',() => ({
+//     template:`<app-component-a [testForm]="testForm"></app-component-a>`,
+//     props:{
+//         testForm            
+//     },   
+// }),{notes:{markdown}})
 // .add('Aki',()=> ({
 //     component:ComponentAComponent,
 //     props:{
@@ -42,3 +66,4 @@ storiesOf('Component A',module)
 //         myevent: action("Hello Aki")
 //     },
 // }),{notes:{markdown}})
+

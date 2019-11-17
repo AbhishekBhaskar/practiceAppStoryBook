@@ -14,22 +14,26 @@ export class ComponentAComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  // @Input() testForm = this.fb.group({
-  //   name:[''],
-  //   email:['']
-  // })
-  @Input() testForm: any;
-  @Output() Submit:EventEmitter<any> = new EventEmitter();
-  
 
-  // onSubmit()
-  // {
-    
-  //   console.log(this.testForm.get('name').value);
-  //   console.log(this.testForm.get('email').value);
-  // }
+  // @Input() testForm: any;
+  // @Output() Submit:EventEmitter<any> = new EventEmitter();
+
+  testForm = this.fb.group({
+    name:[''],
+    email:['']
+  });
+
+  // @Input() name: String;
+  // @Input() email: String;
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter();
+  
+  sendData()
+  {
+    this.onSubmit.emit(this.testForm);
+  }
 
   ngOnInit() {
+    
   }
 
 }
