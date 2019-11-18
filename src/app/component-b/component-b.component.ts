@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-component-b',
@@ -11,6 +12,8 @@ export class ComponentBComponent implements OnInit {
   @Output() myevent: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
+
+  //calendarPlugins = [dayGridPlugin];
 
   ngOnInit() {
   }

@@ -1,12 +1,13 @@
-//import { testForm } from './component-a.stories';
 import { ComponentBComponent } from './../app/component-b/component-b.component';
-import { action } from '@storybook/addon-actions';
-import { ComponentAComponent } from './../app/component-a/component-a.component';
-import {storiesOf, moduleMetadata} from '@storybook/angular';
+//import { testForm } from './component-a.stories';
+//import { ComponentBComponent } from "./../app/component-b/component-b.component";
+import { action } from "@storybook/addon-actions";
+import { ComponentAComponent } from "./../app/component-a/component-a.component";
+import { storiesOf, moduleMetadata } from "@storybook/angular";
 //@ts-ignore
-import * as markdown from './notes/component-a.notes.md';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { any } from 'prop-types';
+import * as markdown from "./notes/component-a.notes.md";
+import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
+import { any } from "prop-types";
 
 var fb: FormBuilder;
 
@@ -15,28 +16,29 @@ var fb: FormBuilder;
 //     email:'gmail'
 //   }
 
-
-  storiesOf('Component A', module)
-.addDecorator(
-      moduleMetadata({
-        declarations: [ComponentAComponent],
-        imports:[ReactiveFormsModule],
-        providers:[FormBuilder]
-      })
-    )
-.add('forms',()=>({
-  component:ComponentAComponent,
-  props:{
-    // name:'Abhi',
-    // email:'gmail',
-    onSubmit: ($event)=>{
-      // let formCheck = '';
-      // formCheck = _event;
-
-      console.log($event.value);
+storiesOf("Component A", module)
+  .addDecorator(
+    moduleMetadata({
+      declarations: [ComponentAComponent],
+      imports: [ReactiveFormsModule],
+      providers: [FormBuilder]
+    })
+  )
+  .add("forms", () => ({
+    component: ComponentAComponent,
+    props: {
+      onSubmit: ($event) => {        
+        console.log($event.value);
+      }
     }
-  }
-}))
+  }),{notes:{markdown}})
+  .add('component B',()=>({
+    component: ComponentBComponent,
+    props:{
+      name:"Abhishek",
+      myevent: action("Hello Abhishek!!")
+    }
+  }),{notes:{markdown}})
 
 // storiesOf('Component A',module)
 // .addDecorator(
@@ -49,8 +51,8 @@ var fb: FormBuilder;
 // .add('testForm',() => ({
 //     template:`<app-component-a [testForm]="testForm"></app-component-a>`,
 //     props:{
-//         testForm            
-//     },   
+//         testForm
+//     },
 // }),{notes:{markdown}})
 // .add('Aki',()=> ({
 //     component:ComponentAComponent,
@@ -66,4 +68,3 @@ var fb: FormBuilder;
 //         myevent: action("Hello Aki")
 //     },
 // }),{notes:{markdown}})
-
