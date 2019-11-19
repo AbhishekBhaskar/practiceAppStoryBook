@@ -13,7 +13,7 @@ export class ComponentBComponent implements OnInit {
 
   constructor() { }
 
-  //calendarPlugins = [dayGridPlugin];
+  calendarPlugins = [dayGridPlugin];
 
   ngOnInit() {
   }
