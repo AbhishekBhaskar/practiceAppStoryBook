@@ -8,28 +8,18 @@ import { FormBuilder } from '@angular/forms'
   styleUrls: ['./component-a.component.css']
 })
 export class ComponentAComponent implements OnInit {
-
-  // @Input() name: String;
-  // @Output() myevent: EventEmitter<any> = new EventEmitter();
-
   constructor(private fb: FormBuilder) { }
-
-
-  // @Input() testForm: any;
-  // @Output() Submit:EventEmitter<any> = new EventEmitter();
 
   testForm = this.fb.group({
     name:[''],
     email:['']
   });
 
-  // @Input() name: String;
-  // @Input() email: String;
-  @Output() onSubmit: EventEmitter<any> = new EventEmitter();
+  @Output() onsubmit: EventEmitter<any> = new EventEmitter();
   
   sendData()
   {
-    this.onSubmit.emit(this.testForm);
+    this.onsubmit.emit(this.testForm);
   }
 
   ngOnInit() {

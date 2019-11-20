@@ -1,14 +1,45 @@
 @import "./../../../node_modules/bootstrap/dist/css/bootstrap.css";
 
-.attendanceCard
-{
-    /* padding: 15px; */
-    margin-top: 2%;
-    border: 1px solid lightgreen;
-    border-radius: 5px;
+.attendanceCard {
+  /* padding: 15px; */
+  margin-top: 2%;
+  border: 1px solid lightgreen;
+  border-radius: 5px;
 }
-.header
-{
-    background-image: linear-gradient(to right, rgba(255, 0, 85,1),rgba(242, 92, 17,1));
-    border-radius: 6px;
+.header {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 85, 1),
+    rgba(242, 92, 17, 1)
+  );
+  border-radius: 6px;
+}
+.header p {
+  color: white;
+}
+.headerData {
+  font-size: 18px;
+}
+.headerBtn {
+  background-color: white;
+  color: rgba(242, 92, 17, 1);
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10%;
+}
+.subHeader {
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+  padding: 25px;
+}
+.theaders {
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+}
+.theaders p{
+    color: gray;
 }

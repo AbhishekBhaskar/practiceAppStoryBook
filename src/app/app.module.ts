@@ -13,6 +13,7 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { TimepickerComponent } from "./timepicker/timepicker.component";
 import { MatCardModule } from "@angular/material/card";
 import {MatGridListModule} from '@angular/material/grid-list'
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatGridListModule} from '@angular/material/grid-list'
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
