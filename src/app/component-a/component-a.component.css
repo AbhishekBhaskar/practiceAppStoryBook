@@ -1,3 +1,6 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
 button{
     background-color: aqua;
     height: 28px;
@@ -5,3 +8,4 @@ button{
     border-radius: 4px;
     cursor: pointer;
 }
+

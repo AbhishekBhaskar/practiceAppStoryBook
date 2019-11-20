@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms'
+import dayGridPlugin from '@fullcalendar/daygrid';
 //import { EventEmitter } from 'events';
 
 @Component({
@@ -14,7 +15,7 @@ export class ComponentAComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-
+  calendarPlugins = [dayGridPlugin];
   // @Input() testForm: any;
   // @Output() Submit:EventEmitter<any> = new EventEmitter();
 

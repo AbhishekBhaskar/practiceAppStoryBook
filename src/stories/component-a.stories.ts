@@ -6,6 +6,8 @@ import {storiesOf, moduleMetadata} from '@storybook/angular';
 //@ts-ignore
 import * as markdown from './notes/component-a.notes.md';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+import dayGridPlugin from '@fullcalendar/daygrid';
 import { any } from 'prop-types';
 
 var fb: FormBuilder;
@@ -14,13 +16,13 @@ var fb: FormBuilder;
 //     name:'Abhishek',
 //     email:'gmail'
 //   }
-
+//calendarPlugins = [dayGridPlugin];
 
   storiesOf('Component A', module)
 .addDecorator(
       moduleMetadata({
         declarations: [ComponentAComponent],
-        imports:[ReactiveFormsModule],
+        imports:[ReactiveFormsModule,FullCalendarModule],
         providers:[FormBuilder]
       })
     )

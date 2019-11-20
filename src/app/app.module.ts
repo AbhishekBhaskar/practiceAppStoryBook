@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ComponentAComponent } from './component-a/component-a.component';
 import { ComponentBComponent } from './component-b/component-b.component';
 import { ReactiveFormsModule  } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule  } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormBuilder,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
