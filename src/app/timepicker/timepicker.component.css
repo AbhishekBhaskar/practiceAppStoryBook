@@ -1,0 +1,14 @@
+@import "./../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.attendanceCard
+{
+    /* padding: 15px; */
+    margin-top: 2%;
+    border: 1px solid lightgreen;
+    border-radius: 5px;
+}
+.header
+{
+    background-image: linear-gradient(to right, rgba(255, 0, 85,1),rgba(242, 92, 17,1));
+    border-radius: 6px;
+}
