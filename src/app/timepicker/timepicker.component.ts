@@ -1,8 +1,18 @@
-import { ComponentAComponent } from './../component-a/component-a.component';
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { ShiftDetails } from "./../shift-details/shiftDetails";
+import { ComponentAComponent } from "./../component-a/component-a.component";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Injector
+} from "@angular/core";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormBuilder, Validators } from "@angular/forms";
+import { ShiftDetailsComponent } from "./../shift-details/shift-details.component";
+import { createCustomElement } from "@angular/elements";
 
 @Component({
   selector: "app-timepicker",
@@ -10,8 +20,13 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./timepicker.component.css"]
 })
 export class TimepickerComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-  
+  constructor(private fb: FormBuilder, private injector: Injector) {
+    const shiftDetailsElement = createCustomElement(ShiftDetailsComponent, {
+      injector: this.injector
+    });
+    customElements.define("shift-details-element", shiftDetailsElement);
+  }
+
   inTime = this.fb.group({
     time: ["", Validators.required]
   });
@@ -19,6 +34,8 @@ export class TimepickerComponent implements OnInit {
   outTime = this.fb.group({
     time: ["", Validators.required]
   });
+
+  shiftDetails: ShiftDetails[] = [];
 
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
@@ -60,8 +77,28 @@ export class TimepickerComponent implements OnInit {
     this.onSubmit.emit({ workHrs: this.workHrs, workMins: this.workMins });
   }
 
-  print(testForm:any){
+  print(testForm: any) {
     console.log(testForm.value);
+  }
+
+  showInputForm() {
+    var shiftDetailsWrapper = document.getElementById("wrapper");
+    const shiftElement = document.createElement("shift-details-element") as any;
+    //document.body.appendChild(shiftElement);
+    shiftElement.addEventListener("onSubmit", (object: any) => {
+      this.shiftDetails.push(object);
+      // for(var value of this.shiftDetails)
+      // {
+      //   console.log(value);  
+      // }
+      console.log(this.shiftDetails);
+    });
+    shiftDetailsWrapper.appendChild(shiftElement);
+  }
+
+  pushToShiftDetails(object: any) {
+    this.shiftDetails.push(object);
+    console.log(this.shiftDetails);
   }
 
   ngOnInit() {}

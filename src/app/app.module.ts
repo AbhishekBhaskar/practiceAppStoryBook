@@ -1,6 +1,6 @@
 //import { FormBuilder } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, Injector } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -14,13 +14,16 @@ import { TimepickerComponent } from "./timepicker/timepicker.component";
 import { MatCardModule } from "@angular/material/card";
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatIconModule} from '@angular/material/icon';
+import { ShiftDetailsComponent } from './shift-details/shift-details.component';
+import {createCustomElement} from '@angular/elements';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentAComponent,
     ComponentBComponent,
-    TimepickerComponent
+    TimepickerComponent,
+    ShiftDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,21 @@ import {MatIconModule} from '@angular/material/icon';
     MatGridListModule,
     MatIconModule
   ],
+  entryComponents: [
+    ShiftDetailsComponent
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(private injector: Injector){
+
+  }
+
+  ngDoBootstrap(){
+    const shiftDetailsElement = createCustomElement(ShiftDetailsComponent, {injector:this.injector});
+    customElements.define('shiftDetails-element', shiftDetailsElement);
+  }
+
+}
