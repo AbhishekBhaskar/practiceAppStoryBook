@@ -1,0 +1,58 @@
+<div class="container-fluid">
+<div class="row tbody">
+  <div class="col-md-2">
+    <p><b>Shift 1</b></p>
+  </div>
+  <div class="col-md-2">
+    <form [formGroup]="inTime">
+      <label>Select time</label><br />
+      <input
+        [ngxTimepicker]="inTimePicker"
+        formControlName="time"
+        [format]="24"
+        placeholder="Select Time"
+      />
+      <ngx-material-timepicker #inTimePicker></ngx-material-timepicker>
+      <!-- <button type="submit" (click)="sendTimeData()">Submit</button> -->
+    </form>
+  </div>
+  <div class="col-md-2">
+    <form [formGroup]="outTime">
+      <label>Select time</label><br />
+      <input
+        [ngxTimepicker]="outTimePicker"
+        formControlName="time"
+        [format]="24"
+        placeholder="Select Time"
+        [disabled]="!inTime.valid"
+      />
+      <ngx-material-timepicker #outTimePicker></ngx-material-timepicker>
+      <button
+        class="btn btn-success btn-lg"
+        type="submit"
+        style="margin-top: 5px;"
+        (click)="calculateWorkHrs()"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  <div class="col-md-2">
+    <div *ngIf="workHrs">
+      <p>{{ workHrs }} hrs</p>
+      <p>{{ workMins }} mins</p>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div *ngIf="workHrs">
+      <p>Biometric</p>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <span class="glyphicon glyphicon-trash"></span>
+  </div>
+  <div class="col-md-1">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </div>
+</div>
+</div>

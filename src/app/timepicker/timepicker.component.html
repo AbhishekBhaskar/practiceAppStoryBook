@@ -1,34 +1,121 @@
-<mat-card class="container-fluid attendanceCard">
+<mat-card class="container-fluid attendanceCard" id="wrapper">
   <mat-card-header class="row header">
     <div class="col-md-2">
       <p>Date</p>
-      <p>Aug 6, 2019</p>
+      <p class="headerData"><b>Aug 6, 2019</b></p>
     </div>
     <div class="col-md-2">
       <p>Biometric Hrs</p>
-      <p>02:30</p>
+      <p class="headerData">02:30</p>
     </div>
     <div class="col-md-2">
       <p>Work Hrs</p>
-      <p>10:10</p>
+      <p class="headerData">10:10</p>
     </div>
     <div class="col-md-2">
       <p>Status</p>
-      <p>Present</p>
+      <p class="headerData">Present</p>
     </div>
     <div class="col-md-2">
       <p>Comment</p>
-      <p>Approved</p>
-    </div>    
+      <p class="headerData">Approved</p>
+    </div>
     <div class="col-md-1">
-      <button>Apply leave</button>
+      <button class="headerBtn">Apply leave</button>
     </div>
   </mat-card-header>
 
-  <form [formGroup]="attendanceTimings">
-    <label>Select time</label><br />
-    <input [ngxTimepicker]="picker" formControlName="time" [format]="24" />
-    <ngx-material-timepicker #picker></ngx-material-timepicker>
-    <button type="submit" (click)="sendTimeData()">Submit</button>
-  </form>
+  <div class="row" class="subHeader">
+    <b style="font-size: 18px;">Attendace request</b>
+  </div>
+
+  <div class="row" class="theaders">
+    <div class="col-md-2">
+      <p><b>Shift</b></p>
+    </div>
+    <div class="col-md-2">
+      <p><b>In Time</b></p>
+    </div>
+    <div class="col-md-2">
+      <p><b>Out Time</b></p>
+    </div>
+    <div class="col-md-2">
+      <p><b>Work Hours</b></p>
+    </div>
+    <div class="col-md-2">
+      <p><b>Reason</b></p>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <div class="row tbody" id="tbody">
+    <div class="col-md-2">
+      <p><b>Shift 1</b></p>
+    </div>
+    <div class="col-md-2">
+      <form [formGroup]="inTime">
+        <label>Select time</label><br />
+        <input
+          [ngxTimepicker]="inTimePicker"
+          formControlName="time"
+          [format]="24"
+          placeholder="Select Time"
+        />
+        <ngx-material-timepicker #inTimePicker></ngx-material-timepicker>
+        <!-- <button type="submit" (click)="sendTimeData()">Submit</button> -->
+      </form>
+    </div>
+    <div class="col-md-2">
+      <form [formGroup]="outTime">
+        <label>Select time</label><br />
+        <input
+          [ngxTimepicker]="outTimePicker"
+          formControlName="time"
+          [format]="24"
+          placeholder="Select Time"
+          [disabled]="!inTime.valid"
+        />
+        <ngx-material-timepicker #outTimePicker></ngx-material-timepicker>
+        <button
+          class="btn btn-success btn-lg"
+          type="submit"
+          style="margin-top: 5px;"
+          (click)="calculateWorkHrs()"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="col-md-2">
+      <div *ngIf="workHrs">
+        <p>{{ workHrs }} hrs</p>
+        <p>{{ workMins }} mins</p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div *ngIf="workHrs">
+        <p>Biometric</p>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <span class="glyphicon glyphicon-trash"></span>
+    </div>
+    <div class="col-md-1">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- <app-shift-details id="shiftDetails" (onSubmit)="pushToShiftDetails($event)"></app-shift-details> -->
+  </div>
+  <br />
+  <!-- <shiftDetails-element></shiftDetails-element> -->
 </mat-card>
+
+<div class="bottomDiv">
+  <button class="request">Send Request</button>
+  <button class="shift" (click)="showInputForm()">Add Shift</button>
+</div>
+
+<app-component-a (onsubmit)="print($event)"></app-component-a>
