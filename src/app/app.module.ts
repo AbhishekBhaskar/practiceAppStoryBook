@@ -24,11 +24,6 @@ import {MatGridListModule} from '@angular/material/grid-list'
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    FormBuilder,
-    ReactiveFormsModule,
-    FullCalendarModule
-=======
     //FormBuilder,
     ReactiveFormsModule,
     FullCalendarModule,
@@ -36,7 +31,6 @@ import {MatGridListModule} from '@angular/material/grid-list'
     NgxMaterialTimepickerModule,
     MatCardModule,
     MatGridListModule
->>>>>>> c72272fe999a8a9c637244441309e3e1bfcc704a
   ],
   providers: [],
   bootstrap: [AppComponent]
