@@ -81,25 +81,28 @@ export class TimepickerComponent implements OnInit {
     console.log(testForm.value);
   }
 
-  showInputForm() {
-    var shiftDetailsWrapper = document.getElementById("wrapper");
-    const shiftElement = document.createElement("shift-details-element") as any;
-    //document.body.appendChild(shiftElement);
-    shiftElement.addEventListener("onSubmit", (object: any) => {
-      this.shiftDetails.push(object);
-      // for(var value of this.shiftDetails)
-      // {
-      //   console.log(value);  
-      // }
-      console.log(this.shiftDetails);
-    });
-    shiftDetailsWrapper.appendChild(shiftElement);
-  }
-
-  pushToShiftDetails(object: any) {
+  @Output() shiftElement:any;
+  
+showInputForm() {
+  var shiftDetailsWrapper = document.getElementById("wrapper");
+   this.shiftElement = document.createElement("shift-details-element") as any;
+  //document.body.appendChild(shiftElement);
+  this.onSubmit.emit(this.shiftElement);
+  this.shiftElement.addEventListener("pushToArray", (object: any) => {
     this.shiftDetails.push(object);
+    // for(var value of this.shiftDetails)
+    // {
+    //   console.log(value);  
+    // }
     console.log(this.shiftDetails);
-  }
+  });
+  shiftDetailsWrapper.appendChild(this.shiftElement);
+}
 
-  ngOnInit() {}
+pushToShiftDetails(object: any) {
+  this.shiftDetails.push(object);
+  console.log(this.shiftDetails);
+}
+
+ngOnInit() { }
 }

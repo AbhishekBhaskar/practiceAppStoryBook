@@ -16,6 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
 import {MatIconModule} from '@angular/material/icon';
 import { ShiftDetailsComponent } from './shift-details/shift-details.component';
 import {createCustomElement} from '@angular/elements';
+import { DateBlockComponent } from './date-block/date-block.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {createCustomElement} from '@angular/elements';
     ComponentAComponent,
     ComponentBComponent,
     TimepickerComponent,
-    ShiftDetailsComponent
+    ShiftDetailsComponent,
+    DateBlockComponent
   ],
   imports: [
     BrowserModule,

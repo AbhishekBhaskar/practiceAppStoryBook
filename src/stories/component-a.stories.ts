@@ -61,9 +61,12 @@ storiesOf("Component A", module)
   )
   .add("TimePicker", () => ({
     component: TimepickerComponent,
-    props: {
+    props: 
+    {
       onSubmit: $event => {
-        console.log($event.workHrs, $event.workMins);
-      }
+        console.log($event);
+      },
+      shiftElement:any
+
     }
   }));

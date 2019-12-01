@@ -1,0 +1,35 @@
+.date-block {
+    width: 80px;
+    height: 64px;
+    border: solid 1px rgba(151, 151, 151, 0.3);
+}
+
+.date {
+    width: 12px;
+    height: 26px;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.workHrs {
+    width: 24px;
+    height: 14px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    text-align: left;
+    color: #818181;
+    float: right;
+    margin-top: 20px;
+}
